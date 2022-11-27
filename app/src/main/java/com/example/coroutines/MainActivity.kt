@@ -29,7 +29,6 @@ class MainActivity : AppCompatActivity() {
                 binding.pbLoad.isVisible = false
                 binding.btnSearch.isEnabled = true
             }
-
         }
     }
 
