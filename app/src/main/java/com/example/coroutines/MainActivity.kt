@@ -16,7 +16,9 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(binding.root)
-        loadData()
+        binding.btnSearch.setOnClickListener {
+            loadData()
+        }
     }
 
     private fun loadData() {
@@ -35,19 +37,25 @@ class MainActivity : AppCompatActivity() {
     private fun loadCity(callback: (String) -> Unit) {
         thread {
             Thread.sleep(5000)
-            callback.invoke("Moscow")
+            runOnUiThread {
+                callback.invoke("Moscow")
+            }
         }
     }
 
     private fun loadTemperature(city: String, callback: (String) -> Unit) {
         thread {
-            Toast.makeText(
-                this,
-                "Loading temp for city: {$city}",
-                Toast.LENGTH_SHORT
-            ).show()
+            runOnUiThread {
+                Toast.makeText(
+                    this,
+                    "Loading temp for city: {$city}",
+                    Toast.LENGTH_SHORT
+                ).show()
+            }
             Thread.sleep(5000)
-            callback.invoke(17.toString())
+            runOnUiThread {
+                callback.invoke(17.toString())
+            }
         }
     }
 }
