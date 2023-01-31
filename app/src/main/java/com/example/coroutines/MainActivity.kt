@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    private suspend fun  loadData() {
+    private suspend fun loadData() {
         binding.pbLoad.isVisible = true
         binding.btnSearch.isEnabled = false
         val city = loadCity()
@@ -36,7 +36,7 @@ class MainActivity : AppCompatActivity() {
         binding.btnSearch.isEnabled = true
     }
 
-    private suspend fun loadCity(): String{
+    private suspend fun loadCity(): String {
         delay(5000)
         return "Moscow"
     }
