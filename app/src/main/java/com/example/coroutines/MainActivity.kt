@@ -31,7 +31,7 @@ class MainActivity : AppCompatActivity() {
         val city = loadCity()
         binding.tvCity.text = city
         val temp = loadTemperature(city)
-        binding.tvWeather.text = temp.toString()
+        binding.tvWeather.text = temp
         binding.pbLoad.isVisible = false
         binding.btnSearch.isEnabled = true
     }
@@ -41,13 +41,13 @@ class MainActivity : AppCompatActivity() {
         return "Moscow"
     }
 
-    private suspend fun loadTemperature(city: String): Int {
+    private suspend fun loadTemperature(city: String): String {
         Toast.makeText(
             this,
             "Loading temp for city: {$city}",
             Toast.LENGTH_SHORT
         ).show()
         delay(5000)
-        return 17
+        return "17 °C"
     }
 }
